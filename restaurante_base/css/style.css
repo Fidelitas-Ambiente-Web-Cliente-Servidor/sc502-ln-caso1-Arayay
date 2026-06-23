@@ -1,20 +1,17 @@
 :root {
-  /* ─── Paleta de colores ─────────────────────────
-     TODO: Podés cambiar estos valores para personalizar
-     el tema de tu restaurante
-  ─────────────────────────────────────────────── */
-  --color-primario:    #2C3E50;
-  --color-secundario:  #E67E22;
-  --color-fondo:       #FAF8F5;
-  --color-texto:       #333333;
-  --color-claro:       #FFFFFF;
-  --color-reserva-vip: #FFF3CD; /* fondo para grupos de 6+ personas */
+  /* Paleta oliva para el restaurante */
+  --color-primario: #757E2F;   /* verde olivo */
+  --color-secundario: #B3894F; /* dorado/caramelo para precios y acentos */
+  --color-fondo: #D4BC95;      /* fondo crema cálido */
+  --color-texto: #222E1F;      /* texto oscuro */
+  --color-claro: #FFFFFF;      /* blanco para tarjetas y tabla */
+  --color-reserva-vip: #F5EAD2; /* fondo suave para grupos de 6+ personas */
 
   --fuente-titulo: 'Playfair Display', serif;
   --fuente-cuerpo: 'Lato', sans-serif;
 }
 
-/* ─── RESET Y BASE ─── */
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -25,4 +22,162 @@ body {
   font-family: var(--fuente-cuerpo);
   background-color: var(--color-fondo);
   color: var(--color-texto);
+  line-height: 1.5;
+}
+
+/* Encabezado principal simple */
+.encabezado-principal {
+  padding: 20px;
+  text-align: center;
+  background-color: var(--color-primario);
+  color: var(--color-claro);
+}
+
+.encabezado-principal h1 {
+  font-family: var(--fuente-titulo);
+  margin-bottom: 5px;
+}
+
+/* Secciones genéricas */
+.seccion {
+  padding: 20px;
+}
+
+/* ----- MENÚ ----- */
+
+#filtros-menu {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-filtro {
+  padding: 6px 12px;
+  border: 1px solid var(--color-primario);
+  background-color: transparent;
+  color: var(--color-primario);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-filtro.activo {
+  background-color: var(--color-primario);
+  color: var(--color-claro);
+}
+
+#contenedor-menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* Card sencilla para cada plato */
+.card-plato {
+  background-color: var(--color-claro);
+  border-radius: 8px;
+  padding: 12px 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.card-plato h3 {
+  font-family: var(--fuente-titulo);
+  margin-bottom: 6px;
+}
+
+.card-plato p {
+  margin-bottom: 4px;
+}
+
+.card-plato-precio {
+  font-weight: bold;
+  color: var(--color-secundario);
+}
+
+.card-plato-categoria {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ----- RESERVAS ----- */
+
+#seccion-reservas {
+  padding: 20px;
+}
+
+#form-reserva {
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.campo {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  padding: 6px 8px;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+}
+
+/* Mensajes de error debajo de los campos */
+.error-campo {
+  font-size: 0.8rem;
+  color: red;
+  min-height: 1em;
+}
+
+/* Botón deshabilitado con estilo simple */
+#btn-reserva[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Tabla de reservas sencilla */
+#tabla-reservas {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+  background-color: var(--color-claro);
+}
+
+#tabla-reservas th,
+#tabla-reservas td {
+  border: 1px solid #ddd;
+  padding: 6px 8px;
+  text-align: left;
+}
+
+/* Fila normal de la tabla */
+.fila-reserva {
+  background-color: #fff;
+}
+
+/* Fila destacada para grupos grandes */
+.fila-reserva.grupo-grande {
+  background-color: var(--color-reserva-vip);
+}
+
+/* Caja donde se muestra el resumen */
+.resumen-reservas {
+  padding: 10px;
+  border-radius: 6px;
+  background-color: var(--color-claro);
+  border: 1px solid #ddd;
+}
+
+/* Responsive sencillo para móviles */
+@media (max-width: 600px) {
+  #filtros-menu {
+    flex-direction: column;
+  }
+
+  #form-reserva {
+    width: 100%;
+  }
 }
